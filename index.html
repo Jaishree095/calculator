@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .calculator {
+      width: 300px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: burlywood;
+    }
+
+    .calculator input[type="button"] {
+      width: 70px;
+      height: 40px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .calculator input[type="text"] {
+      width: calc(100% - 10px);
+      height: 50px;
+      margin-bottom: 10px;
+      padding: 5px;
+      font-size: 20px;
+      text-align: right;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    .col {
+      flex: 1;
+    }
+    body{
+      background-image: url('calc.avif');
+     
+    }
+    
+  </style>
+</head>
+<body>
+  <center><h5>Calculator</h5></center>
+<div class="container">
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <div class="row">
+      <input type="button" value="C" onclick="clearDisplay()" class="col-3">
+    </div>
+    <div class="row">
+      <input type="button" value="9" onclick="addToDisplay('9')">
+      <input type="button" value="8" onclick="addToDisplay('8')">
+      <input type="button" value="7" onclick="addToDisplay('7')">
+    </div>
+    <div class="row">
+      <input type="button" value="6" onclick="addToDisplay('6')">
+      <input type="button" value="5" onclick="addToDisplay('5')">
+      <input type="button" value="4" onclick="addToDisplay('4')">
+    </div>
+    <div class="row">
+      <input type="button" value="3" onclick="addToDisplay('3')">
+      <input type="button" value="2" onclick="addToDisplay('2')">
+      <input type="button" value="1" onclick="addToDisplay('1')">
+    </div>
+
+    <div class="row">
+      <input type="button" value="/" onclick="addToDisplay('/')">
+      <input type="button" value="*" onclick="addToDisplay('*')">
+      <input type="button" value="-" onclick="addToDisplay('-')">
+    </div>
+
+    <div class="row">
+      <input type="button" value="0" onclick="addToDisplay('0')">
+      <input type="button" value="." onclick="addToDisplay('.')">
+      <input type="button" value="+" onclick="addToDisplay('+')">
+    </div>
+    <div class="row">
+      <input type="button" value="=" onclick="calculate()">
+      <input type="button" value="(" onclick="addToDisplay('(')" class="col">
+      <input type="button" value=")" onclick="addToDisplay(')')" class="col">
+    </div>
+  </div>
+</div>
+
+<script>
+  function addToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+
+  function calculate() {
+    try {
+      document.getElementById('display').value = eval(document.getElementById('display').value);
+    } catch (error) {
+      document.getElementById('display').value = 'Error';
+    }
+  }
+
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+</script>
+
+</body>
+</html>
